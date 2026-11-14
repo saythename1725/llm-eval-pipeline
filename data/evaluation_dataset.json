@@ -1,0 +1,38 @@
+
+[
+  {
+    "id": "Q001",
+    "question": "How many paid leaves do employees receive annually?",
+    "expected_answer": "Full-time employees receive 20 paid leaves annually.",
+    "expected_source": "leave_policy.txt",
+    "expected_decision": "answer"
+  },
+  {
+    "id": "Q002",
+    "question": "How many unused leaves can be carried forward?",
+    "expected_answer": "Employees can carry forward a maximum of 5 unused leaves.",
+    "expected_source": "leave_policy.txt",
+    "expected_decision": "answer"
+  },
+  {
+    "id": "Q003",
+    "question": "Can employees work remotely every day?",
+    "expected_answer": "No. Employees can work remotely for 2 days per week.",
+    "expected_source": "wfh_policy.txt",
+    "expected_decision": "answer"
+  },
+  {
+    "id": "Q004",
+    "question": "What is the monthly reimbursement limit?",
+    "expected_answer": "The maximum monthly reimbursement limit is Rs. 5000.",
+    "expected_source": "reimbursement_policy.txt",
+    "expected_decision": "answer"
+  },
+  {
+    "id": "Q005",
+    "question": "Does the company provide free meals?",
+    "expected_answer": "I don't have enough information to answer this.",
+    "expected_source": null,
+    "expected_decision": "abstain"
+  }
+]

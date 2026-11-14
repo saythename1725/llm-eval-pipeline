@@ -1,0 +1,309 @@
+{
+    "run_summary": {
+        "total_questions": 5,
+        "questions_with_relevant_source": 4,
+        "precision_at_3": 0.75,
+        "hit_rate_at_3": 1.0,
+        "mrr": 1.0,
+        "answer_accuracy": 0.3,
+        "average_faithfulness": 0.5,
+        "decision_accuracy": 0.8,
+        "correct_answers": 3,
+        "correct_decisions": 4,
+        "average_generation_latency_ms": 4107.16,
+        "average_total_latency_ms": 18406.97
+    },
+    "results": [
+        {
+            "id": "Q001",
+            "question": "How many paid leaves do employees receive annually?",
+            "expected_answer": "Full-time employees receive 20 paid leaves annually.",
+            "actual_answer": "Every full-time employee receives 20 paid leaves annually.",
+            "expected_source": "leave_policy.txt",
+            "expected_decision": "answer",
+            "retrieved_chunks": [
+                {
+                    "rank": 1,
+                    "source": "leave_policy.txt",
+                    "text": "1. Every full-time employee receives 20 paid leaves annually.\n2. Employees can carry forward a maximum of 5 unused leaves.\n3. Leave requests must be submitted at least 3 days in advance.\n4. Sick leave requires a medical certificate if it exceeds 3 consecutive days.",
+                    "relevant": true
+                },
+                {
+                    "rank": 2,
+                    "source": "leave_policy.txt",
+                    "text": "5. Unused leaves exceeding the carry-forward limit will expire.",
+                    "relevant": true
+                },
+                {
+                    "rank": 3,
+                    "source": "leave_policy.txt",
+                    "text": "COMPANY LEAVE POLICY",
+                    "relevant": true
+                }
+            ],
+            "retrieval_metrics": {
+                "precision_at_3": 1.0,
+                "recall_at_3": 1.0,
+                "reciprocal_rank": 1.0
+            },
+            "answer_evaluation": {
+                "answer_correct": true,
+                "judge_reason": "The actual answer is a rephrased version of the expected answer, maintaining the same meaning.",
+                "judge_method": "local_llm_judge"
+            },
+            "faithfulness_evaluation": {
+                "total_claims": 2,
+                "supported_claims": 1,
+                "unsupported_claims": [
+                    "Generated answer does not mention anything about the maximum carry-forward limit of 5 unused leaves.",
+                    "Generated answer does not mention anything about the condition for sick leave requiring a medical certificate."
+                ],
+                "faithfulness_score": 0.5,
+                "reason": "The generated answer only supports one claim out of two. The remaining claims are not addressed in the context provided."
+            },
+            "decision_evaluation": {
+                "expected_decision": "answer",
+                "actual_decision": "answer",
+                "decision_correct": true
+            },
+            "latency_ms": {
+                "generation": 7633.6,
+                "correctness_judge": 3359.45,
+                "faithfulness_judge": 9011.45,
+                "total": 20004.5
+            }
+        },
+        {
+            "id": "Q002",
+            "question": "How many unused leaves can be carried forward?",
+            "expected_answer": "Employees can carry forward a maximum of 5 unused leaves.",
+            "actual_answer": "Every full-time employee can carry forward a maximum of 5 unused leaves.",
+            "expected_source": "leave_policy.txt",
+            "expected_decision": "answer",
+            "retrieved_chunks": [
+                {
+                    "rank": 1,
+                    "source": "leave_policy.txt",
+                    "text": "5. Unused leaves exceeding the carry-forward limit will expire.",
+                    "relevant": true
+                },
+                {
+                    "rank": 2,
+                    "source": "leave_policy.txt",
+                    "text": "1. Every full-time employee receives 20 paid leaves annually.\n2. Employees can carry forward a maximum of 5 unused leaves.\n3. Leave requests must be submitted at least 3 days in advance.\n4. Sick leave requires a medical certificate if it exceeds 3 consecutive days.",
+                    "relevant": true
+                },
+                {
+                    "rank": 3,
+                    "source": "reimbursement_policy.txt",
+                    "text": "1. Employees can claim reimbursement for approved business expenses.\n2. The maximum monthly reimbursement limit is Rs. 5000.\n3. Original bills must be submitted for reimbursement.\n4. Personal shopping and vacation expenses are not reimbursable.",
+                    "relevant": false
+                }
+            ],
+            "retrieval_metrics": {
+                "precision_at_3": 0.6666666666666666,
+                "recall_at_3": 1.0,
+                "reciprocal_rank": 1.0
+            },
+            "answer_evaluation": {
+                "answer_correct": false,
+                "judge_reason": "The actual answer specifies only full-time employees, while the expected answer applies to all employees.",
+                "judge_method": "local_llm_judge"
+            },
+            "faithfulness_evaluation": {
+                "total_claims": 2,
+                "supported_claims": 1,
+                "unsupported_claims": [
+                    "The context does not mention how many unused leaves can be carried forward."
+                ],
+                "faithfulness_score": 0.5,
+                "reason": "The context states that employees can carry forward a maximum of 5 unused leaves, which is one of the two claims. However, the other claim about the number of unused leaves that can be carried forward is not supported by the context."
+            },
+            "decision_evaluation": {
+                "expected_decision": "answer",
+                "actual_decision": "answer",
+                "decision_correct": true
+            },
+            "latency_ms": {
+                "generation": 3322.69,
+                "correctness_judge": 3781.44,
+                "faithfulness_judge": 11997.99,
+                "total": 19102.13
+            }
+        },
+        {
+            "id": "Q003",
+            "question": "Can employees work remotely every day?",
+            "expected_answer": "No. Employees can work remotely for 2 days per week.",
+            "actual_answer": "I don't have enough information to answer this.",
+            "expected_source": "wfh_policy.txt",
+            "expected_decision": "answer",
+            "retrieved_chunks": [
+                {
+                    "rank": 1,
+                    "source": "wfh_policy.txt",
+                    "text": "1. Employees can work remotely for 2 days per week.\n2. Employees must work from the office for at least 3 days per week.\n3. Remote work requests must be approved by the reporting manager.\n4. Employees must be available during core working hours from 10 AM to 5 PM.",
+                    "relevant": true
+                },
+                {
+                    "rank": 2,
+                    "source": "leave_policy.txt",
+                    "text": "1. Every full-time employee receives 20 paid leaves annually.\n2. Employees can carry forward a maximum of 5 unused leaves.\n3. Leave requests must be submitted at least 3 days in advance.\n4. Sick leave requires a medical certificate if it exceeds 3 consecutive days.",
+                    "relevant": false
+                },
+                {
+                    "rank": 3,
+                    "source": "wfh_policy.txt",
+                    "text": "5. Work from home is not automatically permitted during probation.",
+                    "relevant": true
+                }
+            ],
+            "retrieval_metrics": {
+                "precision_at_3": 0.6666666666666666,
+                "recall_at_3": 1.0,
+                "reciprocal_rank": 1.0
+            },
+            "answer_evaluation": {
+                "answer_correct": false,
+                "judge_reason": "The actual answer does not provide a clear yes or no to the question, which is required for the question 'Can employees work remotely every day?'",
+                "judge_method": "local_llm_judge"
+            },
+            "faithfulness_evaluation": {
+                "total_claims": 2,
+                "supported_claims": 1,
+                "unsupported_claims": [
+                    "Can employees work remotely every day?"
+                ],
+                "faithfulness_score": 0.5,
+                "reason": "The context does not provide information about whether employees can work remotely every day."
+            },
+            "decision_evaluation": {
+                "expected_decision": "answer",
+                "actual_decision": "abstain",
+                "decision_correct": false
+            },
+            "latency_ms": {
+                "generation": 3930.64,
+                "correctness_judge": 5061.4,
+                "faithfulness_judge": 9274.61,
+                "total": 18266.65
+            }
+        },
+        {
+            "id": "Q004",
+            "question": "What is the monthly reimbursement limit?",
+            "expected_answer": "The maximum monthly reimbursement limit is Rs. 5000.",
+            "actual_answer": "The monthly reimbursement limit is Rs. 5000.",
+            "expected_source": "reimbursement_policy.txt",
+            "expected_decision": "answer",
+            "retrieved_chunks": [
+                {
+                    "rank": 1,
+                    "source": "reimbursement_policy.txt",
+                    "text": "1. Employees can claim reimbursement for approved business expenses.\n2. The maximum monthly reimbursement limit is Rs. 5000.\n3. Original bills must be submitted for reimbursement.\n4. Personal shopping and vacation expenses are not reimbursable.",
+                    "relevant": true
+                },
+                {
+                    "rank": 2,
+                    "source": "reimbursement_policy.txt",
+                    "text": "EMPLOYEE REIMBURSEMENT POLICY",
+                    "relevant": true
+                },
+                {
+                    "rank": 3,
+                    "source": "leave_policy.txt",
+                    "text": "5. Unused leaves exceeding the carry-forward limit will expire.",
+                    "relevant": false
+                }
+            ],
+            "retrieval_metrics": {
+                "precision_at_3": 0.6666666666666666,
+                "recall_at_3": 1.0,
+                "reciprocal_rank": 1.0
+            },
+            "answer_evaluation": {
+                "answer_correct": true,
+                "judge_reason": "The actual answer correctly states the monthly reimbursement limit as Rs. 5000, which matches the expected answer.",
+                "judge_method": "local_llm_judge"
+            },
+            "faithfulness_evaluation": {
+                "total_claims": 2,
+                "supported_claims": 1,
+                "unsupported_claims": [
+                    "Example unsupported claim"
+                ],
+                "faithfulness_score": 0.5,
+                "reason": "The context provides evidence for the first claim, 'The monthly reimbursement limit is Rs. 5000.' but does not provide evidence for the rest of the context provided in the answer."
+            },
+            "decision_evaluation": {
+                "expected_decision": "answer",
+                "actual_decision": "answer",
+                "decision_correct": true
+            },
+            "latency_ms": {
+                "generation": 2473.64,
+                "correctness_judge": 4430.51,
+                "faithfulness_judge": 9889.48,
+                "total": 16793.63
+            }
+        },
+        {
+            "id": "Q005",
+            "question": "Does the company provide free meals?",
+            "expected_answer": "I don't have enough information to answer this.",
+            "actual_answer": "I don't have enough information to answer this.",
+            "expected_source": null,
+            "expected_decision": "abstain",
+            "retrieved_chunks": [
+                {
+                    "rank": 1,
+                    "source": "leave_policy.txt",
+                    "text": "1. Every full-time employee receives 20 paid leaves annually.\n2. Employees can carry forward a maximum of 5 unused leaves.\n3. Leave requests must be submitted at least 3 days in advance.\n4. Sick leave requires a medical certificate if it exceeds 3 consecutive days.",
+                    "relevant": null
+                },
+                {
+                    "rank": 2,
+                    "source": "reimbursement_policy.txt",
+                    "text": "1. Employees can claim reimbursement for approved business expenses.\n2. The maximum monthly reimbursement limit is Rs. 5000.\n3. Original bills must be submitted for reimbursement.\n4. Personal shopping and vacation expenses are not reimbursable.",
+                    "relevant": null
+                },
+                {
+                    "rank": 3,
+                    "source": "leave_policy.txt",
+                    "text": "COMPANY LEAVE POLICY",
+                    "relevant": null
+                }
+            ],
+            "retrieval_metrics": {
+                "precision_at_3": null,
+                "recall_at_3": null,
+                "reciprocal_rank": null
+            },
+            "answer_evaluation": {
+                "answer_correct": true,
+                "judge_reason": "The actual answer accurately mirrors the expected answer in meaning, even though the wording is the same. There are no contradictions or factual errors in the actual answer.",
+                "judge_method": "local_llm_judge"
+            },
+            "faithfulness_evaluation": {
+                "total_claims": 2,
+                "supported_claims": 1,
+                "unsupported_claims": [
+                    "The company provides free meals"
+                ],
+                "faithfulness_score": 0.5,
+                "reason": "The context does not provide any information about the company providing free meals."
+            },
+            "decision_evaluation": {
+                "expected_decision": "abstain",
+                "actual_decision": "abstain",
+                "decision_correct": true
+            },
+            "latency_ms": {
+                "generation": 3175.24,
+                "correctness_judge": 5056.74,
+                "faithfulness_judge": 9635.96,
+                "total": 17867.94
+            }
+        }
+    ]
+}
