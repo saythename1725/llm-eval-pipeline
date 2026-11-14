@@ -148,19 +148,6 @@ python -m pytest -v
 
 Some tests and evaluation examples use a live Ollama server. Make sure Ollama is running and the required models are available before running those files.
 
-## GitHub Actions
-
-The workflow in `.github/workflows/llm-evaluation.yml`:
-
-1. Installs Python dependencies.
-2. Installs and starts Ollama.
-3. Downloads the required models.
-4. Builds the vector database.
-5. Runs the evaluation.
-6. Generates the HTML report.
-7. Checks for regressions.
-8. Uploads the report as a workflow artifact.
-
 ## Current scope and limitations
 
 This project is designed for learning the fundamentals of RAG evaluation. The current metrics are intentionally simple:
