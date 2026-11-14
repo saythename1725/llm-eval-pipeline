@@ -5,13 +5,13 @@
         "precision_at_3": 0.75,
         "hit_rate_at_3": 1.0,
         "mrr": 1.0,
-        "answer_accuracy": 0.3,
+        "answer_accuracy": 0.8,
         "average_faithfulness": 0.5,
         "decision_accuracy": 0.8,
-        "correct_answers": 3,
+        "correct_answers": 4,
         "correct_decisions": 4,
-        "average_generation_latency_ms": 4107.16,
-        "average_total_latency_ms": 18406.97
+        "average_generation_latency_ms": 2174.31,
+        "average_total_latency_ms": 14876.7
     },
     "results": [
         {
@@ -48,18 +48,17 @@
             },
             "answer_evaluation": {
                 "answer_correct": true,
-                "judge_reason": "The actual answer is a rephrased version of the expected answer, maintaining the same meaning.",
+                "judge_reason": "The actual answer conveys the same meaning as the expected answer with slightly different wording.",
                 "judge_method": "local_llm_judge"
             },
             "faithfulness_evaluation": {
                 "total_claims": 2,
                 "supported_claims": 1,
                 "unsupported_claims": [
-                    "Generated answer does not mention anything about the maximum carry-forward limit of 5 unused leaves.",
-                    "Generated answer does not mention anything about the condition for sick leave requiring a medical certificate."
+                    "Generated answer does not mention the carry-forward limit and the medical certificate requirement for sick leave."
                 ],
                 "faithfulness_score": 0.5,
-                "reason": "The generated answer only supports one claim out of two. The remaining claims are not addressed in the context provided."
+                "reason": "The generated answer only partially supports one claim from the context. The context provides more information about leave policies, which is not addressed in the generated answer."
             },
             "decision_evaluation": {
                 "expected_decision": "answer",
@@ -67,17 +66,17 @@
                 "decision_correct": true
             },
             "latency_ms": {
-                "generation": 7633.6,
-                "correctness_judge": 3359.45,
-                "faithfulness_judge": 9011.45,
-                "total": 20004.5
+                "generation": 979.94,
+                "correctness_judge": 3973.07,
+                "faithfulness_judge": 9864.83,
+                "total": 14817.84
             }
         },
         {
             "id": "Q002",
             "question": "How many unused leaves can be carried forward?",
             "expected_answer": "Employees can carry forward a maximum of 5 unused leaves.",
-            "actual_answer": "Every full-time employee can carry forward a maximum of 5 unused leaves.",
+            "actual_answer": "The maximum number of unused leaves that can be carried forward is 5.",
             "expected_source": "leave_policy.txt",
             "expected_decision": "answer",
             "retrieved_chunks": [
@@ -106,18 +105,20 @@
                 "reciprocal_rank": 1.0
             },
             "answer_evaluation": {
-                "answer_correct": false,
-                "judge_reason": "The actual answer specifies only full-time employees, while the expected answer applies to all employees.",
+                "answer_correct": true,
+                "judge_reason": "The actual answer correctly states the maximum number of unused leaves that can be carried forward, which matches the expected answer.",
                 "judge_method": "local_llm_judge"
             },
             "faithfulness_evaluation": {
                 "total_claims": 2,
-                "supported_claims": 1,
+                "supported_claims": [
+                    "The maximum number of unused leaves that can be carried forward is 5."
+                ],
                 "unsupported_claims": [
-                    "The context does not mention how many unused leaves can be carried forward."
+                    "Unused leaves exceeding the carry-forward limit will expire."
                 ],
                 "faithfulness_score": 0.5,
-                "reason": "The context states that employees can carry forward a maximum of 5 unused leaves, which is one of the two claims. However, the other claim about the number of unused leaves that can be carried forward is not supported by the context."
+                "reason": "The context supports only one of the claims. The context states that 'Employees can carry forward a maximum of 5 unused leaves', which is consistent with the generated answer. However, the context does not provide information about the maximum number of unused leaves that can be carried forward, so the other claim is unsupported."
             },
             "decision_evaluation": {
                 "expected_decision": "answer",
@@ -125,10 +126,10 @@
                 "decision_correct": true
             },
             "latency_ms": {
-                "generation": 3322.69,
-                "correctness_judge": 3781.44,
-                "faithfulness_judge": 11997.99,
-                "total": 19102.13
+                "generation": 3239.35,
+                "correctness_judge": 3371.28,
+                "faithfulness_judge": 12112.11,
+                "total": 18722.74
             }
         },
         {
@@ -165,7 +166,7 @@
             },
             "answer_evaluation": {
                 "answer_correct": false,
-                "judge_reason": "The actual answer does not provide a clear yes or no to the question, which is required for the question 'Can employees work remotely every day?'",
+                "judge_reason": "The actual answer is incorrect and does not provide any information regarding whether employees can work remotely every day.",
                 "judge_method": "local_llm_judge"
             },
             "faithfulness_evaluation": {
@@ -175,7 +176,7 @@
                     "Can employees work remotely every day?"
                 ],
                 "faithfulness_score": 0.5,
-                "reason": "The context does not provide information about whether employees can work remotely every day."
+                "reason": "The context does not provide any information about employees being able to work remotely every day. The context only mentions that employees can work remotely for 2 days per week."
             },
             "decision_evaluation": {
                 "expected_decision": "answer",
@@ -183,10 +184,10 @@
                 "decision_correct": false
             },
             "latency_ms": {
-                "generation": 3930.64,
-                "correctness_judge": 5061.4,
-                "faithfulness_judge": 9274.61,
-                "total": 18266.65
+                "generation": 2668.72,
+                "correctness_judge": 3546.38,
+                "faithfulness_judge": 9315.05,
+                "total": 15530.15
             }
         },
         {
@@ -230,10 +231,11 @@
                 "total_claims": 2,
                 "supported_claims": 1,
                 "unsupported_claims": [
-                    "Example unsupported claim"
+                    "Original bills must be submitted for reimbursement.",
+                    "Personal shopping and vacation expenses are not reimbursable."
                 ],
                 "faithfulness_score": 0.5,
-                "reason": "The context provides evidence for the first claim, 'The monthly reimbursement limit is Rs. 5000.' but does not provide evidence for the rest of the context provided in the answer."
+                "reason": "Only one claim (monthly reimbursement limit) is supported by the context. The other claims are not supported by the context and the answer contains unsupported information."
             },
             "decision_evaluation": {
                 "expected_decision": "answer",
@@ -241,10 +243,10 @@
                 "decision_correct": true
             },
             "latency_ms": {
-                "generation": 2473.64,
-                "correctness_judge": 4430.51,
-                "faithfulness_judge": 9889.48,
-                "total": 16793.63
+                "generation": 2013.35,
+                "correctness_judge": 3812.19,
+                "faithfulness_judge": 8348.26,
+                "total": 14173.81
             }
         },
         {
@@ -281,17 +283,17 @@
             },
             "answer_evaluation": {
                 "answer_correct": true,
-                "judge_reason": "The actual answer accurately mirrors the expected answer in meaning, even though the wording is the same. There are no contradictions or factual errors in the actual answer.",
+                "judge_reason": "The actual answer matches the expected answer in meaning and does not contradict any information.",
                 "judge_method": "local_llm_judge"
             },
             "faithfulness_evaluation": {
                 "total_claims": 2,
                 "supported_claims": 1,
                 "unsupported_claims": [
-                    "The company provides free meals"
+                    "The company provides free meals."
                 ],
                 "faithfulness_score": 0.5,
-                "reason": "The context does not provide any information about the company providing free meals."
+                "reason": "The context does not provide any information about free meals provided by the company."
             },
             "decision_evaluation": {
                 "expected_decision": "abstain",
@@ -299,10 +301,10 @@
                 "decision_correct": true
             },
             "latency_ms": {
-                "generation": 3175.24,
-                "correctness_judge": 5056.74,
-                "faithfulness_judge": 9635.96,
-                "total": 17867.94
+                "generation": 1970.2,
+                "correctness_judge": 2723.54,
+                "faithfulness_judge": 6445.2,
+                "total": 11138.94
             }
         }
     ]

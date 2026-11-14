@@ -1,0 +1,130 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>LLM Evaluation Report</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background: #f4f6f9;
+                margin: 40px;
+                color: #222;
+            }
+            h1 { margin-bottom: 5px; }
+            .subtitle { color: #666; }
+            .metrics {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+                margin-top: 30px;
+            }
+            .card {
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 2px 8px #ddd;
+            }
+            .card p { color: #666; }
+            .card h2 { margin-bottom: 0; }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                background: white;
+                margin-top: 20px;
+            }
+            th, td {
+                padding: 14px;
+                border-bottom: 1px solid #ddd;
+                text-align: left;
+            }
+            th { background: #e9edf3; }
+        </style>
+    </head>
+
+    <body>
+        <h1>LLM Evaluation Report</h1>
+        <p class="subtitle">RAG Evaluation & Regression Testing</p>
+
+        <h2>Overall Metrics</h2>
+        <div class="metrics">
+            
+        <div class="card">
+            <p>Answer Accuracy</p>
+            <h2>80.00%</h2>
+        </div>
+        
+        <div class="card">
+            <p>Average Faithfulness</p>
+            <h2>50.00%</h2>
+        </div>
+        
+        <div class="card">
+            <p>Decision Accuracy</p>
+            <h2>80.00%</h2>
+        </div>
+        
+        <div class="card">
+            <p>Precision At 3</p>
+            <h2>75.00%</h2>
+        </div>
+        
+        <div class="card">
+            <p>Hit Rate At 3</p>
+            <h2>100.00%</h2>
+        </div>
+        
+        <div class="card">
+            <p>Mrr</p>
+            <h2>100.00%</h2>
+        </div>
+        
+        <div class="card">
+            <p>Average Generation Latency Ms</p>
+            <h2>2174.31 ms</h2>
+        </div>
+        
+        </div>
+
+        <h2>Individual Question Results</h2>
+        <table>
+            <tr>
+                <th>Question ID</th>
+                <th>Question</th>
+                <th>Generated Answer</th>
+            </tr>
+            
+        <tr>
+            <td>Q001</td>
+            <td>How many paid leaves do employees receive annually?</td>
+            <td>Every full-time employee receives 20 paid leaves annually.</td>
+        </tr>
+        
+        <tr>
+            <td>Q002</td>
+            <td>How many unused leaves can be carried forward?</td>
+            <td>The maximum number of unused leaves that can be carried forward is 5.</td>
+        </tr>
+        
+        <tr>
+            <td>Q003</td>
+            <td>Can employees work remotely every day?</td>
+            <td>I don&#x27;t have enough information to answer this.</td>
+        </tr>
+        
+        <tr>
+            <td>Q004</td>
+            <td>What is the monthly reimbursement limit?</td>
+            <td>The monthly reimbursement limit is Rs. 5000.</td>
+        </tr>
+        
+        <tr>
+            <td>Q005</td>
+            <td>Does the company provide free meals?</td>
+            <td>I don&#x27;t have enough information to answer this.</td>
+        </tr>
+        
+        </table>
+    </body>
+    </html>
+    

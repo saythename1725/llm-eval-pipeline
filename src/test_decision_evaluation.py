@@ -1,28 +1,28 @@
 
 from decision_evaluation import evaluate_decision
 
-tests = [
-    {
-        "expected": "answer",
-        "actual": "Employees receive 20 paid leaves annually."
-    },
-    {
-        "expected": "abstain",
-        "actual": "I don't have enough information to answer this."
-    },
-    {
-        "expected": "abstain",
-        "actual": "The company provides free meals."
-    }
-]
-
-for test in tests:
-
+def test_correct_answer_decision():
     result = evaluate_decision(
-        test["expected"],
-        test["actual"]
+        "answer",
+        "Employees receive 20 paid leaves annually."
     )
 
-    print("\nExpected:", test["expected"])
-    print("Actual answer:", test["actual"])
-    print("Result:", result)
+    assert result["actual_decision"] == "answer"
+    assert result["decision_correct"] is True
+
+def test_correct_abstention_decision():
+    result = evaluate_decision(
+        "abstain",
+        "I don't have enough information to answer this."
+    )
+
+    assert result["actual_decision"] == "abstain"
+    assert result["decision_correct"] is True
+
+def test_incorrect_abstention_decision():
+    result = evaluate_decision(
+        "answer",
+        "I don't have enough information to answer this."
+    )
+
+    assert result["decision_correct"] is False
